@@ -19,7 +19,7 @@ export function MessageList({ messages, typingAgents }: MessageListProps) {
   return (
     <div
       ref={containerRef}
-      className="flex-1 overflow-y-auto py-3"
+      className="flex-1 overflow-y-auto py-3 min-h-0"
       style={{ overscrollBehavior: 'contain' }}
     >
       {messages.length === 0 && (

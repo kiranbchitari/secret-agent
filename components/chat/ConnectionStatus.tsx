@@ -12,6 +12,7 @@ const STATUS_LABELS: Record<RoomState['connectionStatus'], string> = {
   connected: 'SECURE',
   disconnected: 'OFFLINE',
   error: 'ERROR',
+  full: 'CHANNEL FULL',
 };
 
 export function ConnectionStatus({ status, userCount }: ConnectionStatusProps) {

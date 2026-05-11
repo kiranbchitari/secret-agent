@@ -33,6 +33,20 @@ export async function POST(req: NextRequest) {
     };
 
     const pusher = getPusherServer();
+    
+    // Check current user count to enforce max 2 users limit
+    try {
+      const channelRes = await pusher.get({ path: `/channels/${channelName}`, params: { info: 'user_count' } });
+      if (channelRes.status === 200) {
+        const body = await channelRes.json();
+        if (body.user_count >= 2) {
+          return NextResponse.json({ error: 'Channel full (max 2 operatives)' }, { status: 403 });
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch channel info for limits, allowing join', e);
+    }
+
     const authResponse = pusher.authorizeChannel(socketId, channelName, userData);
 
     return NextResponse.json(authResponse);

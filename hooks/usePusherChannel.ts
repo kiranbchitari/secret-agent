@@ -94,10 +94,14 @@ export function usePusherChannel({
       addSystemMessage('▶ SECURE CHANNEL ESTABLISHED. ENCRYPTION ACTIVE.');
     });
 
-    channel.bind('pusher:subscription_error', (err: unknown) => {
+    channel.bind('pusher:subscription_error', (err: any) => {
       console.error('Pusher subscription error:', err);
       isConnectedRef.current = false;
-      updateRoomState({ connectionStatus: 'error', isConnected: false });
+      if (err?.status === 403) {
+        updateRoomState({ connectionStatus: 'full', isConnected: false });
+      } else {
+        updateRoomState({ connectionStatus: 'error', isConnected: false });
+      }
     });
 
     channel.bind('pusher:member_added', () => {

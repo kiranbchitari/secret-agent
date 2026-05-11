@@ -24,7 +24,7 @@ export interface RoomState {
   expiresAt: number; // unix ms — 30 min from room creation
   isBurned: boolean;
   isConnected: boolean;
-  connectionStatus: 'connecting' | 'connected' | 'disconnected' | 'error';
+  connectionStatus: 'connecting' | 'connected' | 'disconnected' | 'error' | 'full';
 }
 
 export interface PusherMessagePayload {
