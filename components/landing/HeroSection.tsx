@@ -103,6 +103,7 @@ export function HeroSection() {
           border: '1px solid rgba(0,255,65,0.1)',
           fontFamily: 'var(--font-mono)',
           fontSize: '11px',
+          minHeight: '164px',
         }}
       >
         <div className="mb-2" style={{ color: 'var(--text-dim)' }}>
