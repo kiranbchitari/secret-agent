@@ -29,7 +29,7 @@ export function HeroSection() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 text-center">
+    <div className="flex flex-col items-center gap-4 text-center">
       {/* Glowing logo */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -39,14 +39,14 @@ export function HeroSection() {
       >
         {/* Outer ring */}
         <div
-          className="w-24 h-24 rounded-full flex items-center justify-center"
+          className="w-20 h-20 rounded-full flex items-center justify-center"
           style={{
             border: '1px solid rgba(0,255,65,0.3)',
             boxShadow: '0 0 40px rgba(0,255,65,0.2), inset 0 0 20px rgba(0,255,65,0.05)',
           }}
         >
           <div
-            className="w-16 h-16 rounded-full flex items-center justify-center"
+            className="w-14 h-14 rounded-full flex items-center justify-center"
             style={{
               border: '1px solid rgba(0,255,65,0.5)',
               background: 'radial-gradient(circle, rgba(0,255,65,0.1) 0%, transparent 70%)',
@@ -97,7 +97,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="w-full max-w-sm rounded-lg p-4 text-left"
+        className="w-full max-w-sm rounded-lg p-3 text-left"
         style={{
           background: 'rgba(0,0,0,0.6)',
           border: '1px solid rgba(0,255,65,0.1)',

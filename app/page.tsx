@@ -42,7 +42,7 @@ export default function HomePage() {
   }, [initAgent]);
   return (
     <main
-      className="relative min-h-dvh flex flex-col items-center justify-center p-6"
+      className="relative min-h-dvh flex flex-col items-center justify-center p-4 py-8"
       style={{
         background: 'radial-gradient(ellipse at 50% 0%, rgba(0,255,65,0.04) 0%, transparent 60%)',
       }}
@@ -81,7 +81,7 @@ export default function HomePage() {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-sm flex flex-col gap-8">
+      <div className="relative z-10 w-full max-w-sm flex flex-col gap-5">
         {/* Burned notification */}
         <Suspense>
           <BurnedBanner />
