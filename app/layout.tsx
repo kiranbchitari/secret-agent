@@ -40,7 +40,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <meta name="theme-color" content="#020804" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body style={{ background: '#020804', minHeight: '100dvh' }}>
