@@ -46,6 +46,53 @@
     --radius-xl: 24px;
   }
 
+  /* ── Camouflage Theme Overrides ── */
+  .theme-camo {
+    --bg-void: #f0f2f5;
+    --bg-dark: #ffffff;
+    --bg-surface: #ffffff;
+    --bg-glass: rgba(0, 0, 0, 0.04);
+    --bg-glass-hover: rgba(0, 0, 0, 0.08);
+
+    --green-primary: #007aff;
+    --green-dim: #0062cc;
+    --green-dark: #004b99;
+    --green-ghost: rgba(0, 122, 255, 0.1);
+    --green-border: rgba(0, 122, 255, 0.2);
+    --green-border-strong: rgba(0, 122, 255, 0.4);
+
+    --text-bright: #000000;
+    --text-mid: #4b4b52;
+    --text-dim: #8e8e93;
+    --text-ghost: rgba(0, 0, 0, 0.2);
+
+    --danger: #ff3b30;
+    --danger-dim: rgba(255, 59, 48, 0.1);
+    --danger-glow: none;
+
+    --glow-sm: none;
+    --glow-md: none;
+    --glow-lg: none;
+    --glow-xl: none;
+
+    --border-glass: 1px solid rgba(0, 0, 0, 0.08);
+    --border-strong: 1px solid rgba(0, 0, 0, 0.15);
+
+    --font-mono: var(--font-sans);
+
+    /* Bubble Overrides */
+    --bubble-self-bg: #007aff;
+    --bubble-self-border: 1px solid #007aff;
+    --bubble-self-text: #ffffff;
+    
+    --bubble-other-bg: #e5e5ea;
+    --bubble-other-border: 1px solid #e5e5ea;
+    --bubble-other-text: #000000;
+
+    --bubble-system-bg: transparent;
+    --bubble-system-border: none;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -166,22 +213,28 @@
 
   /* Message bubble — self */
   .bubble-self {
-    background: linear-gradient(135deg, rgba(0, 255, 65, 0.12), rgba(0, 255, 65, 0.06));
-    border: 1px solid rgba(0, 255, 65, 0.25);
+    background: var(--bubble-self-bg, linear-gradient(135deg, rgba(0, 255, 65, 0.12), rgba(0, 255, 65, 0.06)));
+    border: var(--bubble-self-border, 1px solid rgba(0, 255, 65, 0.25));
     border-bottom-right-radius: 4px !important;
+    color: var(--bubble-self-text, var(--text-bright)) !important;
   }
+
+  .bubble-self p { color: inherit; }
 
   /* Message bubble — other */
   .bubble-other {
-    background: linear-gradient(135deg, rgba(0, 200, 51, 0.06), rgba(0, 255, 65, 0.03));
-    border: 1px solid rgba(0, 255, 65, 0.1);
+    background: var(--bubble-other-bg, linear-gradient(135deg, rgba(0, 200, 51, 0.06), rgba(0, 255, 65, 0.03)));
+    border: var(--bubble-other-border, 1px solid rgba(0, 255, 65, 0.1));
     border-bottom-left-radius: 4px !important;
+    color: var(--bubble-other-text, var(--text-bright)) !important;
   }
+
+  .bubble-other p { color: inherit; }
 
   /* Message bubble — system */
   .bubble-system {
-    background: rgba(0, 255, 65, 0.04);
-    border: 1px dashed rgba(0, 255, 65, 0.15);
+    background: var(--bubble-system-bg, rgba(0, 255, 65, 0.04));
+    border: var(--bubble-system-border, 1px dashed rgba(0, 255, 65, 0.15));
   }
 
   /* Pulse animation */

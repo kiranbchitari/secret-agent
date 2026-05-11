@@ -21,6 +21,7 @@ interface ChatStore {
   // UI state
   isTyping: Record<string, { alias: string; at: number }>;
   isBurning: boolean;
+  theme: 'hacker' | 'camo';
 
   // Actions
   setRoomState: (state: RoomState) => void;
@@ -36,6 +37,7 @@ interface ChatStore {
 
   setBurning: (v: boolean) => void;
   burnRoom: () => void;
+  toggleTheme: () => void;
 }
 
 // ── Store ────────────────────────────────────────────────────────────────────
@@ -51,6 +53,7 @@ export const useChatStore = create<ChatStore>()(
 
       let agentId = sessionStorage.getItem('agentId');
       let agentAlias = sessionStorage.getItem('agentAlias');
+      const savedTheme = localStorage.getItem('sa_theme') as 'hacker' | 'camo' | null;
 
       if (!agentId) {
         agentId = generateAgentId();
@@ -61,13 +64,19 @@ export const useChatStore = create<ChatStore>()(
         sessionStorage.setItem('agentAlias', agentAlias);
       }
 
-      set({ agentId, agentAlias, agentReady: true });
+      set({ 
+        agentId, 
+        agentAlias, 
+        agentReady: true,
+        theme: savedTheme || 'hacker' 
+      });
     },
 
     messages: [],
     roomState: null,
     isTyping: {},
     isBurning: false,
+    theme: 'hacker',
 
     setRoomState: (state) => set({ roomState: state }),
 
@@ -121,5 +130,11 @@ export const useChatStore = create<ChatStore>()(
     burnRoom: () => {
       set({ isBurning: true, messages: [], isTyping: {} });
     },
+
+    toggleTheme: () => set((s) => {
+      const nextTheme = s.theme === 'hacker' ? 'camo' : 'hacker';
+      localStorage.setItem('sa_theme', nextTheme);
+      return { theme: nextTheme };
+    }),
   }))
 );

@@ -15,6 +15,7 @@ export default function RoomPageClient({ roomId }: RoomPageClientProps) {
 
   // If passphrase is in store, it means they just created the room
   const storedPassphrase = useChatStore(s => s.roomState?.passphrase);
+  const theme = useChatStore(s => s.theme);
 
   const [authenticated, setAuthenticated] = useState(storedPassphrase !== undefined);
   const [passphrase, setPassphrase] = useState(storedPassphrase || '');
@@ -31,52 +32,56 @@ export default function RoomPageClient({ roomId }: RoomPageClientProps) {
 
   if (expired) {
     return (
-      <div
-        className="fixed inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center"
-        style={{ background: '#020804' }}
-      >
-        <div style={{ fontSize: 48 }}>💀</div>
-        <h1
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 18,
-            color: 'var(--danger)',
-            letterSpacing: '0.12em',
-          }}
+      <div className={theme === 'camo' ? 'theme-camo' : ''}>
+        <div
+          className="fixed inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center"
+          style={{ background: 'var(--bg-void)' }}
         >
-          CHANNEL EXPIRED
-        </h1>
-        <p
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 11,
-            color: 'var(--text-dim)',
-            letterSpacing: '0.06em',
-          }}
-        >
-          This secure channel has self-destructed.
-        </p>
-        <button
-          onClick={() => router.push('/')}
-          className="agent-btn agent-btn-primary px-6 py-2.5 rounded-lg"
-          style={{ fontFamily: 'var(--font-mono)', fontSize: 12 }}
-        >
-          ← RETURN TO BASE
-        </button>
+          <div style={{ fontSize: 48 }}>💀</div>
+          <h1
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 18,
+              color: 'var(--danger)',
+              letterSpacing: '0.12em',
+            }}
+          >
+            CHANNEL EXPIRED
+          </h1>
+          <p
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 11,
+              color: 'var(--text-dim)',
+              letterSpacing: '0.06em',
+            }}
+          >
+            This secure channel has self-destructed.
+          </p>
+          <button
+            onClick={() => router.push('/')}
+            className="agent-btn agent-btn-primary px-6 py-2.5 rounded-lg"
+            style={{ fontFamily: 'var(--font-mono)', fontSize: 12 }}
+          >
+            ← RETURN TO BASE
+          </button>
+        </div>
       </div>
     );
   }
 
   if (!authenticated) {
     return (
-      <PassphraseModal
-        onSuccess={(p) => {
-          setPassphrase(p);
-          setAuthenticated(true);
-        }}
-        onBack={() => router.push('/')}
-        roomId={roomId}
-      />
+      <div className={theme === 'camo' ? 'theme-camo' : ''}>
+        <PassphraseModal
+          onSuccess={(p) => {
+            setPassphrase(p);
+            setAuthenticated(true);
+          }}
+          onBack={() => router.push('/')}
+          roomId={roomId}
+        />
+      </div>
     );
   }
 

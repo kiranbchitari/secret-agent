@@ -81,8 +81,8 @@ export function MessageInput({ onSend, onTypingChange, disabled = false }: Messa
       style={{
         padding: '8px 12px',
         paddingBottom: 'max(8px, env(safe-area-inset-bottom))',
-        borderTop: '1px solid rgba(0,255,65,0.1)',
-        background: 'rgba(5,13,5,0.95)',
+        borderTop: 'var(--border-glass)',
+        background: 'var(--bg-surface)',
         backdropFilter: 'blur(16px)',
       }}
     >
@@ -122,8 +122,8 @@ export function MessageInput({ onSend, onTypingChange, disabled = false }: Messa
           onClick={() => setShowEmoji((v) => !v)}
           className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200"
           style={{
-            background: showEmoji ? 'rgba(0,255,65,0.1)' : 'transparent',
-            border: '1px solid rgba(0,255,65,0.15)',
+            background: showEmoji ? 'var(--green-ghost)' : 'transparent',
+            border: 'var(--border-glass)',
             fontSize: 18,
             color: showEmoji ? 'var(--green-primary)' : 'var(--text-dim)',
           }}
@@ -163,9 +163,9 @@ export function MessageInput({ onSend, onTypingChange, disabled = false }: Messa
           className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200"
           style={{
             background: text.trim() && !disabled
-              ? 'linear-gradient(135deg, rgba(0,255,65,0.2), rgba(0,255,65,0.1))'
+              ? 'var(--green-ghost)'
               : 'transparent',
-            border: `1px solid ${text.trim() && !disabled ? 'rgba(0,255,65,0.4)' : 'rgba(0,255,65,0.1)'}`,
+            border: `1px solid ${text.trim() && !disabled ? 'var(--green-border-strong)' : 'transparent'}`,
             boxShadow: text.trim() && !disabled ? 'var(--glow-sm)' : 'none',
           }}
           aria-label="Send message"

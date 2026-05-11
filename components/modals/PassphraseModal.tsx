@@ -24,7 +24,7 @@ export function PassphraseModal({ onSuccess, onBack, roomId }: PassphraseModalPr
     <div
       className="fixed inset-0 flex items-center justify-center p-6"
       style={{
-        background: 'rgba(2,8,4,0.95)',
+        background: 'var(--bg-void)',
         backdropFilter: 'blur(12px)',
         zIndex: 100,
       }}
@@ -40,14 +40,14 @@ export function PassphraseModal({ onSuccess, onBack, roomId }: PassphraseModalPr
             <div
               className="w-14 h-14 rounded-full flex items-center justify-center"
               style={{
-                background: 'rgba(0,255,65,0.05)',
-                border: '1px solid rgba(0,255,65,0.3)',
+                background: 'var(--bg-glass)',
+                border: 'var(--border-strong)',
                 boxShadow: 'var(--glow-sm)',
               }}
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <rect x="5" y="11" width="14" height="10" rx="2" stroke="#00ff41" strokeWidth="1.5" />
-                <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#00ff41" strokeWidth="1.5" strokeLinecap="round" />
+                <rect x="5" y="11" width="14" height="10" rx="2" stroke="var(--green-primary)" strokeWidth="1.5" />
+                <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="var(--green-primary)" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             </div>
           </div>

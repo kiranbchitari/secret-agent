@@ -17,9 +17,9 @@ export function BurnButton({ onClick }: BurnButtonProps) {
         fontFamily: 'var(--font-mono)',
         fontSize: 10,
         letterSpacing: '0.1em',
-        border: '1px solid rgba(255,51,51,0.3)',
-        background: 'rgba(255,51,51,0.05)',
-        color: '#ff6666',
+        border: '1px solid var(--danger-dim)',
+        background: 'var(--danger-dim)',
+        color: 'var(--danger)',
         cursor: 'pointer',
         transition: 'all 0.2s ease',
       }}

@@ -16,9 +16,9 @@ function BurnedBanner() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="w-full text-center py-3 px-4 rounded-lg mb-4"
+      initial={{ opacity: 0, y: -20, x: '-50%' }}
+      animate={{ opacity: 1, y: 0, x: '-50%' }}
+      className="absolute top-6 left-1/2 w-[90%] max-w-sm text-center py-2 px-4 rounded-lg z-50"
       style={{
         background: 'rgba(255,51,51,0.08)',
         border: '1px solid rgba(255,51,51,0.25)',

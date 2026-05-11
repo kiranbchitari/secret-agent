@@ -36,6 +36,8 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
     clearMessages,
     clearRoomState,
     setRoomState,
+    theme,
+    toggleTheme,
   } = useChatStore();
 
   // Initialize agent identity on client (prevents SSR hydration mismatch)
@@ -148,7 +150,7 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
 
       {/* Main layout — full height flex column */}
       <div
-        className="flex flex-col fixed inset-0"
+        className={`flex flex-col fixed inset-0 ${theme === 'camo' ? 'theme-camo' : ''}`}
         style={{ overflow: 'hidden', background: 'var(--bg-void)' }}
       >
         {/* Top bar */}
@@ -156,8 +158,8 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
           className="flex-shrink-0 flex items-center justify-between px-3 py-2"
           style={{
             paddingTop: 'max(8px, env(safe-area-inset-top))',
-            borderBottom: '1px solid rgba(0,255,65,0.1)',
-            background: 'rgba(5,13,5,0.95)',
+            borderBottom: 'var(--border-glass)',
+            background: 'var(--bg-surface)',
             backdropFilter: 'blur(16px)',
           }}
         >
@@ -166,10 +168,10 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
             <button
               id="back-btn"
               onClick={() => router.push('/')}
-              className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+              className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all"
               style={{
                 background: 'transparent',
-                border: '1px solid rgba(0,255,65,0.15)',
+                border: 'var(--border-glass)',
                 color: 'var(--text-dim)',
                 cursor: 'pointer',
               }}
@@ -223,11 +225,27 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
               }}
             />
             <ExpirationTimer expiresAt={expiresAt} onExpired={handleExpired} />
+            <button
+              onClick={toggleTheme}
+              className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-[var(--bg-glass-hover)]"
+              style={{
+                background: 'transparent',
+                border: 'var(--border-glass)',
+                color: 'var(--text-mid)',
+                cursor: 'pointer',
+              }}
+              title="Toggle Theme"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
             <div
               style={{
                 width: 1,
                 height: 16,
-                background: 'rgba(0,255,65,0.1)',
+                background: 'var(--bg-glass-hover)',
               }}
             />
             <BurnButton onClick={() => setShowBurnModal(true)} />
@@ -238,8 +256,8 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
         <div
           className="flex-shrink-0 flex items-center justify-center py-1.5"
           style={{
-            borderBottom: '1px solid rgba(0,255,65,0.05)',
-            background: 'rgba(0,255,65,0.02)',
+            borderBottom: 'var(--border-glass)',
+            background: 'var(--bg-glass)',
           }}
         >
           <span

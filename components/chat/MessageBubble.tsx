@@ -75,7 +75,6 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           style={{
             fontSize: 14,
             lineHeight: 1.5,
-            color: isSelf ? 'var(--text-bright)' : 'var(--text-bright)',
           }}
         >
           {text}
