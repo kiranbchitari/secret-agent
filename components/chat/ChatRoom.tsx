@@ -148,8 +148,8 @@ export function ChatRoom({ roomId, expiresAt, passphrase }: ChatRoomProps) {
 
       {/* Main layout — full height flex column */}
       <div
-        className="flex flex-col"
-        style={{ height: '100dvh', overflow: 'hidden' }}
+        className="flex flex-col fixed inset-0"
+        style={{ overflow: 'hidden', background: 'var(--bg-void)' }}
       >
         {/* Top bar */}
         <div
