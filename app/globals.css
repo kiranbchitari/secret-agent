@@ -59,7 +59,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden; /* Prevents whole page from scrolling when keyboard opens */
+    overflow-x: hidden;
     overscroll-behavior-y: none; /* Disables pull-to-refresh / rubber banding */
   }
 
